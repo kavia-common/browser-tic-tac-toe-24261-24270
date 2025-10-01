@@ -236,7 +236,7 @@ body {
   background: transparent;
 }
 .dow-dark .dow-cell {
-  color: #ffffff; /* typo_18 color in dark header row of original, but DOW in dark used opacity 0.2 over white; use white for contrast */
+  color: #ffffff; /* for contrast in dark */
   opacity: 0.8;
 }
 
@@ -294,7 +294,7 @@ body {
   box-shadow: var(--shadow-1);
 }
 .card-dark .weeks-dark .day.disabled {
-  background: rgba(255,255,255,0.1); /* uses style_12 as well */
+  background: rgba(255,255,255,0.1);
   color: #ffffff;
   border: none;
   box-shadow: none;
