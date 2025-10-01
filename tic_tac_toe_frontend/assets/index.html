@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Calendar - Regular</title>
+  <meta name="description" content="Calendar Regular screen rendered from Figma with Ocean Professional theme.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="app" class="screen regular" aria-label="Calendar Regular Screen">
+    <!-- Light mode card (matches Figma Light Mode panel) -->
+    <section class="calendar-card card-light" aria-labelledby="light-title">
+      <h2 id="light-title" class="visually-hidden">Light Mode Calendar</h2>
+
+      <!-- Header -->
+      <div class="calendar-header">
+        <button class="nav-btn prev" aria-label="Previous month" type="button">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+
+        <div class="month-year" role="group" aria-label="Month and Year">
+          <button class="month button-lite" aria-expanded="false" aria-haspopup="listbox" type="button">
+            <span class="month-label">April</span>
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+          <button class="year button-lite" aria-expanded="false" aria-haspopup="listbox" type="button">
+            <span class="year-label">2021</span>
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <button class="nav-btn next" aria-label="Next month" type="button">
+          <span class="chevron chevron-right" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <!-- Day of week -->
+      <div class="dow" role="row" aria-label="Days of week">
+        <div class="dow-cell"><span aria-hidden="true">Mo</span><span class="visually-hidden">Monday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Tu</span><span class="visually-hidden">Tuesday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">We</span><span class="visually-hidden">Wednesday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Th</span><span class="visually-hidden">Thursday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Fr</span><span class="visually-hidden">Friday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Sa</span><span class="visually-hidden">Saturday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Su</span><span class="visually-hidden">Sunday</span></div>
+      </div>
+
+      <!-- Weeks and days (exact content and states per Figma) -->
+      <div class="weeks" role="grid" aria-readonly="true" aria-label="April 2021">
+        <!-- Week 1 -->
+        <div class="week" role="row">
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>29</span></button>
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>30</span></button>
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>31</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>1</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>2</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>3</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>4</span></button>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="week" role="row">
+          <button class="day" role="gridcell" aria-selected="false"><span>5</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>6</span></button>
+          <button class="day today" role="gridcell" aria-selected="true"><span>7</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>8</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>9</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>10</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>11</span></button>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="week" role="row">
+          <button class="day" role="gridcell" aria-selected="false"><span>12</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>13</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>14</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>15</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>0</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>17</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>18</span></button>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="week" role="row">
+          <button class="day" role="gridcell" aria-selected="false"><span>19</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>20</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>21</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>22</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>23</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>24</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>25</span></button>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="week" role="row">
+          <button class="day" role="gridcell" aria-selected="false"><span>26</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>27</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>28</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>29</span></button>
+          <button class="day" role="gridcell" aria-selected="false"><span>30</span></button>
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>1</span></button>
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>2</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dark mode card (matches Figma Dark Mode panel) -->
+    <section class="calendar-card card-dark" aria-labelledby="dark-title">
+      <h2 id="dark-title" class="visually-hidden">Dark Mode Calendar</h2>
+
+      <div class="calendar-header">
+        <button class="nav-btn prev" aria-label="Previous month" type="button">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+
+        <div class="month-year" role="group" aria-label="Month and Year">
+          <button class="month button-dark" type="button" aria-expanded="false" aria-haspopup="listbox">
+            <span class="month-label invert">April</span>
+            <span class="caret invert" aria-hidden="true"></span>
+          </button>
+          <button class="year button-dark" type="button" aria-expanded="false" aria-haspopup="listbox">
+            <span class="year-label invert">2021</span>
+            <span class="caret invert" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <button class="nav-btn next" aria-label="Next month" type="button">
+          <span class="chevron chevron-right" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="dow dow-dark" role="row" aria-label="Days of week">
+        <div class="dow-cell"><span aria-hidden="true">Mo</span><span class="visually-hidden">Monday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Tu</span><span class="visually-hidden">Tuesday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">We</span><span class="visually-hidden">Wednesday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Th</span><span class="visually-hidden">Thursday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Fr</span><span class="visually-hidden">Friday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Sa</span><span class="visually-hidden">Saturday</span></div>
+        <div class="dow-cell"><span aria-hidden="true">Su</span><span class="visually-hidden">Sunday</span></div>
+      </div>
+
+      <div class="weeks weeks-dark" role="grid" aria-readonly="true" aria-label="April 2021 dark">
+        <div class="week" role="row">
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>29</span></button>
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>30</span></button>
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>31</span></button>
+          <button class="day" role="gridcell"><span>1</span></button>
+          <button class="day" role="gridcell"><span>2</span></button>
+          <button class="day" role="gridcell"><span>3</span></button>
+          <button class="day" role="gridcell"><span>4</span></button>
+        </div>
+        <div class="week" role="row">
+          <button class="day" role="gridcell"><span>5</span></button>
+          <button class="day" role="gridcell"><span>6</span></button>
+          <button class="day today-dark" role="gridcell" aria-selected="true"><span>7</span></button>
+          <button class="day" role="gridcell"><span>8</span></button>
+          <button class="day" role="gridcell"><span>9</span></button>
+          <button class="day" role="gridcell"><span>10</span></button>
+          <button class="day" role="gridcell"><span>11</span></button>
+        </div>
+        <div class="week" role="row">
+          <button class="day" role="gridcell"><span>12</span></button>
+          <button class="day" role="gridcell"><span>13</span></button>
+          <button class="day" role="gridcell"><span>14</span></button>
+          <button class="day" role="gridcell"><span>15</span></button>
+          <button class="day" role="gridcell"><span>0</span></button>
+          <button class="day" role="gridcell"><span>17</span></button>
+          <button class="day" role="gridcell"><span>18</span></button>
+        </div>
+        <div class="week" role="row">
+          <button class="day" role="gridcell"><span>19</span></button>
+          <button class="day" role="gridcell"><span>20</span></button>
+          <button class="day" role="gridcell"><span>21</span></button>
+          <button class="day" role="gridcell"><span>22</span></button>
+          <button class="day" role="gridcell"><span>23</span></button>
+          <button class="day" role="gridcell"><span>24</span></button>
+          <button class="day" role="gridcell"><span>25</span></button>
+        </div>
+        <div class="week" role="row">
+          <button class="day" role="gridcell"><span>26</span></button>
+          <button class="day" role="gridcell"><span>27</span></button>
+          <button class="day" role="gridcell"><span>28</span></button>
+          <button class="day" role="gridcell"><span>29</span></button>
+          <button class="day" role="gridcell"><span>30</span></button>
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>1</span></button>
+          <button class="day disabled" role="gridcell" aria-disabled="true" tabindex="-1"><span>2</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+:root {
+  /* Ocean Professional palette */
+  --ocean-primary: #2563EB; /* requested primary */
+  --ocean-secondary: #F59E0B;
+  --ocean-success: #F59E0B;
+  --ocean-error: #EF4444;
+  --ocean-bg: #f9fafb;
+  --ocean-surface: #ffffff;
+  --ocean-text: #111827;
+
+  /* Figma design tokens (mapped) */
+  --color-adafb3: #adafb3;  /* style_0 background */
+  --color-1d1d1f: #1d1d1f;  /* style_75 card bg dark */
+  --color-ffffff: #ffffff;
+  --color-262629: #262629;  /* dark surfaces & buttons */
+  --color-ebebeb: #ebebeb;
+  --color-000000: #000000;
+  --color-f5f5f5: #f5f5f5;  /* light card bg */
+  --color-0047ff: #0047ff;  /* figma blue accent */
+  --color-e5e5e5: #e5e5e5;  /* grid borders light */
+  --color-141414: #141414;
+  --color-1f1f1f: #1f1f1f;
+  --color-001754: #001754;
+  --color-e6e6e6: #e6e6e6;
+  --color-d8e3ff: #d8e3ff;
+
+  /* Typography */
+  --font-family-lexend: "Lexend", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --typo-24-700-lh24: 700 24px/24px var(--font-family-lexend);
+  --typo-18-500-lh18: 500 18px/18px var(--font-family-lexend);
+
+  /* Radii from styles */
+  --radius-4: 4px;   /* style_9, style_26 */
+  --radius-6: 6px;   /* style_11, style_18, style_22, style_31 */
+  --radius-16: 16px; /* style_15, style_75, style_79 */
+  --radius-24: 24px; /* style_0 background, style_37, style_39 */
+  --radius-80: 80px; /* circular buttons style_76/80 */
+
+  /* Shadows from tokens */
+  --shadow-0: 0 1px 2px 0 rgba(0,14,51,1);  /* shadow_0 */
+  --shadow-1: 0 1px 1px 0 rgba(0,14,51,1);  /* shadow_1 */
+  --shadow-2: 0 3px 2px 0 #0047ff, 0 1.5px 1px 0 #001f70; /* buttons style_84 */
+  --shadow-5: 0 4px 4px 0 rgba(0,14,51,1);  /* shadow_5 */
+
+  /* Sizing per Figma */
+  --cell-w: 54px;
+  --row-h: 44px;
+  --gap-0: 0px;
+
+  /* Borders */
+  --border-050: 0.5px solid var(--color-e5e5e5);
+  --border-2-white: 2px solid var(--color-ffffff);
+
+  /* Transitions */
+  --ease: 200ms cubic-bezier(.2,.6,.2,1);
+
+  /* App gradient (Ocean Professional hint) */
+  --app-gradient: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(249,250,251,0));
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--ocean-bg);
+  color: var(--ocean-text);
+  font-family: var(--font-family-lexend);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,1px,1px); white-space: nowrap; border: 0;
+}
+
+/* Screen wrapper matches 1200x800 with bg token #adafb3 as frame background */
+.screen.regular {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--app-gradient), var(--color-adafb3);
+}
+
+/* Two cards side-by-side like Figma layout, responsive stacking on small screens */
+#app {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 426px));
+  gap: 48px;
+}
+@media (max-width: 980px) {
+  #app { grid-template-columns: 1fr; }
+}
+
+/* Card shells (Light/Dark blocks) sizes: 426x396 with 16 radius and subtle shadow */
+.calendar-card {
+  width: 426px;
+  min-height: 396px;
+  border-radius: var(--radius-16);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: var(--shadow-0);
+  background: var(--color-f5f5f5); /* base, overridden per variant */
+  position: relative;
+}
+
+.card-light {
+  background: var(--color-f5f5f5); /* style_79 */
+}
+.card-dark {
+  background: var(--color-1d1d1f); /* style_75 */
+  color: #f5f5f5;
+}
+
+/* Header layout: three regions; exact control sizes */
+.calendar-header {
+  display: grid;
+  grid-template-columns: var(--row-h) 1fr var(--row-h);
+  align-items: center;
+  height: var(--row-h);
+  margin-bottom: 16px;
+}
+
+/* Nav circular buttons: 44x44, radius 80, shadows per style_80/76 */
+.nav-btn {
+  width: var(--row-h);
+  height: var(--row-h);
+  border-radius: var(--radius-80);
+  border: none;
+  background: var(--color-ffffff);
+  box-shadow: var(--shadow-1);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform var(--ease), box-shadow var(--ease), background-color var(--ease);
+}
+.card-dark .nav-btn {
+  background: var(--color-262629);
+}
+.nav-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-5); }
+.nav-btn:active { transform: translateY(0); }
+
+/* Chevron icon recreation (using border technique to avoid external assets) */
+.chevron, .chevron-right {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-left: 2.5px solid #000;  /* style_5 border black 2.5 */
+  border-bottom: 2.5px solid #000;
+  transform: rotate(45deg);
+}
+.chevron-right {
+  transform: rotate(-135deg);
+}
+.card-dark .chevron,
+.card-dark .chevron-right {
+  border-color: #ebebeb; /* lighter in dark per style_4 usage for icon union bg */
+}
+
+/* Month & Year group: two 93x44 and 90x44 containers, each 6px radius with shadow_1 */
+.month-year {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.button-lite, .button-dark {
+  min-width: 90px; /* Month 93px, Year 90px; let label dictate min */
+  height: var(--row-h);
+  padding: 0 12px;
+  border-radius: var(--radius-6);
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr 8px;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-1);
+  cursor: default;
+}
+.month.button-lite { min-width: 93px; }
+.year.button-lite { min-width: 90px; }
+.button-lite {
+  background: var(--color-ffffff); /* style_81 */
+}
+.button-dark {
+  background: var(--color-262629); /* style_77 */
+}
+.month-label, .year-label {
+  font: var(--typo-24-700-lh24);
+  letter-spacing: -0.24px;
+  color: var(--color-141414);
+}
+.card-dark .month-label.invert,
+.card-dark .year-label.invert {
+  color: var(--color-f5f5f5);
+}
+
+/* Caret (down) as an 8x8 square rotated 45 deg to mimic small triangle */
+.caret {
+  width: 8px; height: 8px;
+  position: relative;
+}
+.caret::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--color-0047ff); /* style_8 */
+  transform: translateY(4px) scale(0.5);
+}
+.caret.invert::before {
+  border-top-color: var(--color-0047ff);
+}
+
+/* Day of Week row: 7 cells of 54x44 with 4px radius, light text color mapping */
+.dow {
+  display: grid;
+  grid-template-columns: repeat(7, var(--cell-w));
+  grid-auto-rows: var(--row-h);
+  justify-content: center;
+  gap: var(--gap-0);
+  margin-bottom: 12px;
+}
+.dow-cell {
+  width: var(--cell-w);
+  height: var(--row-h);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-4); /* style_9 */
+  font: var(--typo-18-500-lh18);
+  color: #1f1f1f; /* typo_21 */
+  background: transparent;
+}
+.dow-dark .dow-cell {
+  color: #ffffff; /* typo_18 color in dark header row of original, but DOW in dark used opacity 0.2 over white; use white for contrast */
+  opacity: 0.8;
+}
+
+/* Weeks grid: follow 378 width (7*54) and 236 height = 5 rows * 44 + gaps (0) */
+.weeks {
+  width: calc(7 * var(--cell-w));
+  display: grid;
+  grid-auto-rows: var(--row-h);
+  gap: var(--gap-0);
+  justify-content: center;
+}
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, var(--cell-w));
+  gap: var(--gap-0);
+}
+
+/* Day cells: Regular vs Disabled vs Today */
+.day {
+  width: var(--cell-w);
+  height: var(--row-h);
+  border-radius: var(--radius-6); /* style_78 inner frames are 6 radius */
+  border: var(--border-050);      /* style_78 0.5px e5e5e5 */
+  background: var(--color-ffffff);
+  color: #1f1f1f; /* typo_21 */
+  font: var(--typo-18-500-lh18);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-1);
+  transition: background-color var(--ease), box-shadow var(--ease), transform var(--ease);
+}
+.day:hover { transform: translateY(-1px); box-shadow: var(--shadow-5); }
+.day:active { transform: translateY(0); }
+
+.day.disabled {
+  border: none;
+  background: rgba(255,255,255,0.1); /* style_12 opacity 0.1 */
+  color: #001754; /* typo_22 for disabled numbers in light card */
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Today (light) - style_14: bg #0047ff with 2px white border */
+.day.today {
+  background: var(--color-0047ff);
+  border: var(--border-2-white);
+  color: #ffffff;
+}
+
+/* Dark card day theming */
+.card-dark .weeks-dark .day {
+  background: var(--color-262629);
+  border: 0.5px solid var(--color-e5e5e5);
+  color: #ebebeb; /* typo_19 */
+  box-shadow: var(--shadow-1);
+}
+.card-dark .weeks-dark .day.disabled {
+  background: rgba(255,255,255,0.1); /* uses style_12 as well */
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+}
+.card-dark .weeks-dark .day.today-dark {
+  background: var(--color-0047ff);
+  border: var(--border-2-white);
+  color: #ffffff;
+  box-shadow: var(--shadow-2);
+}
+
+/* Responsive scaling: shrink grid on narrow screens preserving proportions */
+@media (max-width: 420px) {
+  :root {
+    --cell-w: 44px;
+    --row-h: 40px;
+  }
+  .calendar-card { width: 100%; min-width: 300px; }
+  .weeks { width: calc(7 * var(--cell-w)); }
+}
